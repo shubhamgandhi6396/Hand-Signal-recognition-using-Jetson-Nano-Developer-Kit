@@ -20,7 +20,6 @@ The 4 gestures we are considering in this project are:
 Computers 'look' at images as multidimensional arrays or matricies.
 Note: When images are loaded in OpenCV, they return BGR (blue, green, red) channels, where as matplotlib expects RGB (red, green, blue). Therefore, we need  to convert the loaded image matrix from BGR to RGB.
 
-Approach 1:
 Using a background image to find differences (can be used for images and video)
 
 This technique requires a background image to find the difference between the background and the current frame to find what as changed. This difference creates a 'mask' that represents where in the image the foreground is. A draw back of this algorithm is that any movement of the camera, change of lighting, change in focus, etc. will make the current frame totally different from the background image.
