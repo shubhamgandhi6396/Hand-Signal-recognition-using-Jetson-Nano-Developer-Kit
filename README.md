@@ -1,6 +1,6 @@
 # Hand-Signal-recognition-using-Jetson-Nano-Developer-Kit
 
-![](graphic/github_demo1.gif)
+![](graphic/github_demo.gif)
 Hand gesture allows precise and instinctive ways to maneuver the complicated
 machine. We can develop a method with the use of computer vision algorithm to develop a
 spontaneous way of agent-less communication between a drone and its operator.In this project we propose
