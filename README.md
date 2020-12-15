@@ -16,7 +16,7 @@ The 4 gestures we are considering in this project are:
 2) Forward
 3) Descend
 4) Stop
-
+## Techinque I:Using OpenCV and Keras
 Computers 'look' at images as multidimensional arrays or matricies.
 Note: When images are loaded in OpenCV, they return BGR (blue, green, red) channels, where as matplotlib expects RGB (red, green, blue). Therefore, we need  to convert the loaded image matrix from BGR to RGB.
 
@@ -46,6 +46,8 @@ Building the Neural Network
 
 Here we assemble the neural network with keras and compile it for training.
 
+
+
 This is a very simple convolutional neural network containing three convolutional and max pooling layers. After a tensor is passed through the convolutional layers, it is flatted into a vector and passed through the dense layers.
 
 Preparing Data for Training
@@ -59,3 +61,20 @@ Training data is used to train the model to recognize gestures and validation da
 Training the Network
 
 Now we can train the model on the augmented data.
+
+## Techinque II: Image Classification using Fastai
+Before any work can be done a dataset needs to be converted into a DataBunch object, and in the case of the computer vision data - specifically into an ImageDataBunch subclass.
+Since our images are placed in folders whose names correspond to the image labels, we will use the ImageDataBunch.from_folder() function to create an object that contains our image data. This is super useful and makes it incredibly easy to read the data into our model
+Fastai can automatically split our data into train and validation sets, so we don't even need to create these on our own.
+The only hyperparameters we need are the path-variable pointing to our data set, the size of the inputs and the batch size for each gradient descent iteration.
+The function argument called get_transforms() which returns a list of available image transformations upon call.
+The parameter valid_pct which controls the percentage of images that will be randomly chosen to be in the validation set.
+Fastai has a function called create_cnn() from its vision module.
+ This function creates what is called a learner object, which we'll put into a named variable.
+ We are using the ResNet34 architecture as our base model for transfer learning. 
+Upon call, the trained architecture will be downloaded via the Fastai API and stored locally.
+The learner object we create comes with a build-in function to find the optimal learning rate, or range of learning rates, for training.
+ It achieves this by fitting the model for a few epochs and saving for which learning rates the loss decreases the most.
+Lastly, we can use Fastai’s  ClassificationInterpretation class to interpret our results. 
+To create an interpretation object we need to call the from_learner method and pass it our learner/model. 
+
